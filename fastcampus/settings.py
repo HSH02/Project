@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-c*d!rp6aurh@a6s5&$#e=a8z!)47e9zs5zpd0a2^ii&!7%l1%j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ec2-54-180-202-150.ap-northeast-2.compute.amazonaws.com'] #ec2 dns 주소
 
 
 # Application definition
