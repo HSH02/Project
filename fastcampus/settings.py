@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-c*d!rp6aurh@a6s5&$#e=a8z!)47e9zs5zpd0a2^ii&!7%l1%j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-54-180-202-150.ap-northeast-2.compute.amazonaws.com'] #ec2 dns 주소
+ALLOWED_HOSTS = ['*'] 
 
 
 # Application definition
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'order',
     'boss',
     'delivery',
-    'rest_framework'
+    'rest_framework',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -80,17 +81,17 @@ WSGI_APPLICATION = 'fastcampus.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'project1',
+        'NAME': 'project',
         'USER' : 'admin',
         'PASSWORD':'Passw0rd$',
-        'HOST':'database-1.c7sjhjzwcifb.ap-northeast-2.rds.amazonaws.com',
+        'HOST':'database-10.c7sjhjzwcifb.ap-northeast-2.rds.amazonaws.com',
         'PORT':'3306',
         'OPTIONS':{
             'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
         }
     }
 }
-#데이터베이스 이름 : project1
+#데이터베이스 이름 : project
 #비밀번호 Passw0rd$
 
 # Password validation
