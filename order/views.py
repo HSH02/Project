@@ -1,20 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from pytz import timezone
-from order.models import Shop, Menu, Order,Orderfood
+from order.models import Shop,Menu, Order,Orderfood
 from order.serializers import ShopSerializer, MenuSerializer
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 
 @csrf_exempt
 def shop(request):
-    if request.method == "GET":
+    if request.method == 'GET':
         # shop = Shop.objects.all()
         # serializer = ShopSerializer(shop, many=True)
         # return JsonResponse(serializer.data, safe=False)
+
         shop = Shop.objects.all()
         return render(request, 'order/shop_list.html', {'shop_list':shop})
-        
+
     elif request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = ShopSerializer(data=data)
@@ -22,6 +22,7 @@ def shop(request):
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
+
 
 @csrf_exempt
 def menu(request, shop):
@@ -31,8 +32,6 @@ def menu(request, shop):
         # return JsonResponse(serializer.data, safe=False)
         return render(request, 'order/menu_list.html', {'menu_list':menu, 'shop':shop})
 
-
-
     elif request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = MenuSerializer(data=data)
@@ -40,6 +39,7 @@ def menu(request, shop):
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
+
 
 from django.utils import timezone
 @csrf_exempt
